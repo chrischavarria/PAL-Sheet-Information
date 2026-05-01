@@ -63,11 +63,10 @@ a {
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: center;
-  padding: 22px clamp(18px, 5vw, 72px);
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 24px clamp(18px, 5vw, 72px) 10px;
 }
 
 .brand,
@@ -84,25 +83,36 @@ a {
 
 .brand__logo {
   display: block;
-  width: min(220px, 40vw);
+  width: min(275px, 48vw);
   height: auto;
 }
 
 .contact-links {
+  justify-content: center;
   color: var(--teal-dark);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 650;
 }
 
 .contact-links a {
+  padding: 6px 12px;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
   text-decoration: none;
-  border-bottom: 1px solid rgba(15, 118, 110, 0.24);
 }
 
 .hero__content {
   width: min(720px, calc(100% - 36px));
   align-self: center;
-  margin: 0 clamp(18px, 5vw, 72px) 8svh;
+  margin: 0 auto 8svh;
+  text-align: center;
+}
+
+.hero__copy,
+.search-panel {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .eyebrow {
@@ -154,6 +164,7 @@ h3 {
   border-radius: 8px;
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
+  text-align: left;
 }
 
 .search-panel label {
@@ -234,6 +245,10 @@ input[type="search"]:focus {
   margin-bottom: 28px;
 }
 
+.section-heading h2 {
+  max-width: 760px;
+}
+
 .section-heading > p,
 .two-column > p,
 .storage-layout > p {
@@ -263,8 +278,8 @@ input[type="search"]:focus {
 
 .ingredient-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
 }
 
 .ingredient-card {
@@ -279,12 +294,15 @@ input[type="search"]:focus {
   text-align: left;
   box-shadow: 0 8px 26px rgba(24, 50, 58, 0.06);
   cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .ingredient-card:focus,
 .ingredient-card:hover {
   outline: 3px solid rgba(15, 118, 110, 0.16);
   border-color: rgba(15, 118, 110, 0.42);
+  box-shadow: 0 14px 34px rgba(24, 50, 58, 0.1);
+  transform: translateY(-1px);
 }
 
 .ingredient-card h3 {
@@ -442,7 +460,6 @@ input[type="search"]:focus {
   }
 
   .topbar,
-  .contact-links,
   .two-column,
   .section-heading,
   .storage-layout,
@@ -452,13 +469,12 @@ input[type="search"]:focus {
   }
 
   .topbar {
-    display: grid;
     padding-top: 18px;
   }
 
   .contact-links {
-    display: grid;
-    gap: 4px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .hero__content {
@@ -477,7 +493,16 @@ input[type="search"]:focus {
 
 @media (max-width: 520px) {
   .brand__logo {
-    width: min(190px, 68vw);
+    width: min(235px, 74vw);
+  }
+
+  .contact-links {
+    display: grid;
+    width: min(100%, 360px);
+  }
+
+  .contact-links a {
+    text-align: center;
   }
 
   .search-panel {

@@ -174,6 +174,9 @@ const dialogTitle = document.querySelector("#dialog-title");
 const dialogDescription = document.querySelector("#dialog-description");
 const dialogAliases = document.querySelector("#dialog-aliases");
 const chips = document.querySelectorAll(".chip");
+const alphabetizedIngredients = [...ingredients].sort((a, b) => (
+  a.name.localeCompare(b.name)
+));
 
 let activeFilter = "all";
 
@@ -223,7 +226,7 @@ function renderIngredients(items) {
 }
 
 function getFilteredIngredients() {
-  return ingredients.filter((ingredient) => (
+  return alphabetizedIngredients.filter((ingredient) => (
     activeFilter === "all" || ingredient.tags.includes(activeFilter)
   ));
 }
@@ -243,7 +246,7 @@ function search() {
     return;
   }
 
-  const results = ingredients.filter((ingredient) => matchesIngredient(ingredient, query));
+  const results = alphabetizedIngredients.filter((ingredient) => matchesIngredient(ingredient, query));
   renderIngredients(results);
 
   if (results.length === 1) {
@@ -267,7 +270,7 @@ searchInput.addEventListener("input", () => {
     statusText.textContent = "Start typing to find an ingredient.";
     return;
   }
-  const results = ingredients.filter((ingredient) => matchesIngredient(ingredient, query));
+  const results = alphabetizedIngredients.filter((ingredient) => matchesIngredient(ingredient, query));
   renderIngredients(results);
   statusText.textContent = results.length
     ? `${results.length} possible match${results.length === 1 ? "" : "es"} found.`
@@ -316,4 +319,4 @@ dialog.addEventListener("click", (event) => {
   }
 });
 
-renderIngredients(ingredients);
+renderIngredients(alphabetizedIngredients);
