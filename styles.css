@@ -103,9 +103,9 @@ a {
 }
 
 .hero__content {
-  width: min(720px, calc(100% - 36px));
+  width: min(760px, calc(100% - 36px));
   align-self: center;
-  margin: 0 auto 8svh;
+  margin: 0 auto 7svh;
   text-align: center;
 }
 
@@ -132,16 +132,16 @@ p {
 }
 
 h1 {
-  max-width: 680px;
-  margin-bottom: 18px;
-  font-size: clamp(2.55rem, 7vw, 5.7rem);
-  line-height: 0.98;
+  max-width: 620px;
+  margin: 0 auto 18px;
+  font-size: clamp(2.3rem, 5vw, 4.25rem);
+  line-height: 1.04;
   letter-spacing: 0;
 }
 
 h2 {
-  font-size: clamp(1.45rem, 3vw, 2.3rem);
-  line-height: 1.1;
+  font-size: clamp(1.55rem, 2.4vw, 2.05rem);
+  line-height: 1.16;
   letter-spacing: 0;
 }
 
@@ -150,9 +150,9 @@ h3 {
 }
 
 .hero__copy {
-  max-width: 620px;
+  max-width: 660px;
   color: #39535a;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
 }
 
 .search-panel {
@@ -227,7 +227,6 @@ input[type="search"]:focus {
 }
 
 .two-column,
-.section-heading,
 .storage-layout,
 .call-grid {
   display: grid;
@@ -242,18 +241,31 @@ input[type="search"]:focus {
 }
 
 .section-heading {
-  margin-bottom: 28px;
+  display: grid;
+  gap: 10px;
+  max-width: 790px;
+  margin-bottom: 30px;
 }
 
 .section-heading h2 {
-  max-width: 760px;
+  max-width: 640px;
+  margin-bottom: 0;
 }
 
 .section-heading > p,
 .two-column > p,
 .storage-layout > p {
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: 1rem;
+}
+
+.section-heading > p {
+  max-width: 760px;
+}
+
+.storage-layout {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  padding-top: 6px;
 }
 
 .filter-chips {
